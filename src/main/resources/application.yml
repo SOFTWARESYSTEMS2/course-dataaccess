@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: course-dataaccess
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/course_dataaccess}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+server:
+  shutdown: graceful
