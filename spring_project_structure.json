@@ -1,0 +1,1772 @@
+{
+  "project_root": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess",
+  "build_files": {
+    "pom.xml": {
+      "groupId": "Degree-Flowchart",
+      "artifactId": "course-dataaccess",
+      "version": "0.0.1-SNAPSHOT",
+      "dependencies": [
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-starter-web",
+          "version": null,
+          "scope": null
+        },
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-starter-data-jpa",
+          "version": null,
+          "scope": null
+        },
+        {
+          "groupId": "org.postgresql",
+          "artifactId": "postgresql",
+          "version": null,
+          "scope": "runtime"
+        },
+        {
+          "groupId": "org.flywaydb",
+          "artifactId": "flyway-core",
+          "version": null,
+          "scope": null
+        },
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-starter-validation",
+          "version": null,
+          "scope": null
+        },
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-starter-actuator",
+          "version": null,
+          "scope": null
+        },
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-starter-test",
+          "version": null,
+          "scope": "test"
+        },
+        {
+          "groupId": "org.springframework.boot",
+          "artifactId": "spring-boot-testcontainers",
+          "version": null,
+          "scope": "test"
+        }
+      ]
+    }
+  },
+  "resources": {
+    "properties": {
+      "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/resources/application.properties": {
+        "spring.application.name": "course-dataaccess"
+      }
+    },
+    "yaml_files": [],
+    "templates": [],
+    "static_files": []
+  },
+  "source_files": [
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/test/java/Degree_Flowchart/course_dataaccess/CourseDataaccessApplicationTests.java",
+      "package": "Degree_Flowchart.course_dataaccess",
+      "imports": [
+        "org.junit.jupiter.api.Test",
+        "org.springframework.boot.test.context.SpringBootTest"
+      ],
+      "classes": [
+        {
+          "name": "CourseDataaccessApplicationTests",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "SpringBootTest",
+              "args": ""
+            }
+          ],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [
+        {
+          "name": "contextLoads",
+          "visibility": null,
+          "return_type": "void",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Test",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/CourseDataaccessApplication.java",
+      "package": "Degree_Flowchart.course_dataaccess",
+      "imports": [
+        "org.springframework.boot.SpringApplication",
+        "org.springframework.boot.autoconfigure.SpringBootApplication"
+      ],
+      "classes": [
+        {
+          "name": "CourseDataaccessApplication",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "SpringBootApplication",
+              "args": ""
+            }
+          ],
+          "roles": [
+            "SpringBootApplication"
+          ]
+        }
+      ],
+      "fields": [],
+      "methods": [
+        {
+          "name": "main",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "String[] args",
+          "annotations": []
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/dto/PrerequisiteDto.java",
+      "package": "Degree_Flowchart.course_dataaccess.dto",
+      "imports": [],
+      "classes": [],
+      "fields": [],
+      "methods": [
+        {
+          "name": "PrerequisiteDto",
+          "visibility": "public",
+          "return_type": "record",
+          "params": "String courseCode, String requiredCourseCode",
+          "annotations": []
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/dto/CourseDto.java",
+      "package": "Degree_Flowchart.course_dataaccess.dto",
+      "imports": [],
+      "classes": [],
+      "fields": [],
+      "methods": [
+        {
+          "name": "CourseDto",
+          "visibility": "public",
+          "return_type": "record",
+          "params": "Long id, String code, String title, int credits, boolean repeatable, String departmentName",
+          "annotations": []
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/dto/CourseOfferingDto.java",
+      "package": "Degree_Flowchart.course_dataaccess.dto",
+      "imports": [],
+      "classes": [],
+      "fields": [],
+      "methods": [
+        {
+          "name": "CourseOfferingDto",
+          "visibility": "public",
+          "return_type": "record",
+          "params": "Long id, String courseCode, String courseTitle, String termLabel, int capacity, int enrolledCount",
+          "annotations": []
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/CourseController.java",
+      "package": "Degree_Flowchart.course_dataaccess.controllers",
+      "imports": [
+        "java.util.List",
+        "org.springframework.http.ResponseEntity",
+        "org.springframework.web.bind.annotation.GetMapping",
+        "org.springframework.web.bind.annotation.PathVariable",
+        "org.springframework.web.bind.annotation.RequestMapping",
+        "org.springframework.web.bind.annotation.RestController",
+        "Degree_Flowchart.course_dataaccess.dto.CourseDto",
+        "Degree_Flowchart.course_dataaccess.dto.PrerequisiteDto",
+        "Degree_Flowchart.course_dataaccess.services.CourseDataAccessService"
+      ],
+      "classes": [
+        {
+          "name": "CourseController",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "RestController",
+              "args": ""
+            },
+            {
+              "name": "RequestMapping",
+              "args": "\"/courses\""
+            }
+          ],
+          "roles": [
+            "RestController"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "service",
+          "type": "CourseDataAccessService",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        }
+      ],
+      "methods": [
+        {
+          "name": "CourseController",
+          "visibility": null,
+          "return_type": "public",
+          "params": "CourseDataAccessService service",
+          "annotations": []
+        },
+        {
+          "name": "getCourseByCode",
+          "visibility": "public",
+          "return_type": "ResponseEntity<CourseDto>",
+          "params": "@PathVariable String code",
+          "annotations": [
+            {
+              "name": "GetMapping",
+              "args": "\"/{code}\""
+            }
+          ],
+          "endpoint": {
+            "http_methods": [
+              "GET"
+            ],
+            "paths": [
+              "/{code}"
+            ]
+          }
+        },
+        {
+          "name": "getPrerequisites",
+          "visibility": "public",
+          "return_type": "List<PrerequisiteDto>",
+          "params": "@PathVariable String code",
+          "annotations": [
+            {
+              "name": "GetMapping",
+              "args": "\"/{code}/prerequisites\""
+            }
+          ],
+          "endpoint": {
+            "http_methods": [
+              "GET"
+            ],
+            "paths": [
+              "/{code}/prerequisites"
+            ]
+          }
+        }
+      ],
+      "class_level_paths": [
+        "/courses"
+      ]
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/TermController.java",
+      "package": "Degree_Flowchart.course_dataaccess.controllers",
+      "imports": [
+        "java.util.List",
+        "org.springframework.web.bind.annotation.GetMapping",
+        "org.springframework.web.bind.annotation.PathVariable",
+        "org.springframework.web.bind.annotation.RequestMapping",
+        "org.springframework.web.bind.annotation.RestController",
+        "Degree_Flowchart.course_dataaccess.dto.CourseOfferingDto",
+        "Degree_Flowchart.course_dataaccess.services.CourseDataAccessService"
+      ],
+      "classes": [
+        {
+          "name": "TermController",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "RestController",
+              "args": ""
+            },
+            {
+              "name": "RequestMapping",
+              "args": "\"/terms\""
+            }
+          ],
+          "roles": [
+            "RestController"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "service",
+          "type": "CourseDataAccessService",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        }
+      ],
+      "methods": [
+        {
+          "name": "TermController",
+          "visibility": null,
+          "return_type": "public",
+          "params": "CourseDataAccessService service",
+          "annotations": []
+        },
+        {
+          "name": "getOfferingsByTerm",
+          "visibility": "public",
+          "return_type": "List<CourseOfferingDto>",
+          "params": "@PathVariable String termLabel",
+          "annotations": [
+            {
+              "name": "GetMapping",
+              "args": "\"/{termLabel}/offerings\""
+            }
+          ],
+          "endpoint": {
+            "http_methods": [
+              "GET"
+            ],
+            "paths": [
+              "/{termLabel}/offerings"
+            ]
+          }
+        },
+        {
+          "name": "getActiveTermOfferings",
+          "visibility": "public",
+          "return_type": "List<CourseOfferingDto>",
+          "params": "",
+          "annotations": [
+            {
+              "name": "GetMapping",
+              "args": "\"/active/offerings\""
+            }
+          ],
+          "endpoint": {
+            "http_methods": [
+              "GET"
+            ],
+            "paths": [
+              "/active/offerings"
+            ]
+          }
+        }
+      ],
+      "class_level_paths": [
+        "/terms"
+      ]
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/OfferingController.java",
+      "package": "Degree_Flowchart.course_dataaccess.controllers",
+      "imports": [
+        "org.springframework.http.ResponseEntity",
+        "org.springframework.web.bind.annotation.GetMapping",
+        "org.springframework.web.bind.annotation.RequestMapping",
+        "org.springframework.web.bind.annotation.RequestParam",
+        "org.springframework.web.bind.annotation.RestController",
+        "Degree_Flowchart.course_dataaccess.dto.CourseOfferingDto",
+        "Degree_Flowchart.course_dataaccess.services.CourseDataAccessService"
+      ],
+      "classes": [
+        {
+          "name": "OfferingController",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "RestController",
+              "args": ""
+            },
+            {
+              "name": "RequestMapping",
+              "args": "\"/offerings\""
+            }
+          ],
+          "roles": [
+            "RestController"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "service",
+          "type": "CourseDataAccessService",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        }
+      ],
+      "methods": [
+        {
+          "name": "OfferingController",
+          "visibility": null,
+          "return_type": "public",
+          "params": "CourseDataAccessService service",
+          "annotations": []
+        },
+        {
+          "name": "getOffering",
+          "visibility": "public",
+          "return_type": "ResponseEntity<CourseOfferingDto>",
+          "params": "@RequestParam String courseCode, @RequestParam String termLabel",
+          "annotations": [
+            {
+              "name": "GetMapping",
+              "args": ""
+            }
+          ],
+          "endpoint": {
+            "http_methods": [
+              "GET"
+            ],
+            "paths": []
+          }
+        }
+      ],
+      "class_level_paths": [
+        "/offerings"
+      ]
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/repositories/TermRepository.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.repositories",
+      "imports": [
+        "java.util.List",
+        "java.util.Optional",
+        "org.springframework.data.jpa.repository.JpaRepository",
+        "Degree_Flowchart.course_dataaccess.data.entities.Term"
+      ],
+      "classes": [
+        {
+          "name": "TermRepository",
+          "type": "interface",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/repositories/DepartmentRepository.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.repositories",
+      "imports": [
+        "java.util.Optional",
+        "org.springframework.data.jpa.repository.JpaRepository",
+        "Degree_Flowchart.course_dataaccess.data.entities.Department"
+      ],
+      "classes": [
+        {
+          "name": "DepartmentRepository",
+          "type": "interface",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/repositories/CourseRepository.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.repositories",
+      "imports": [
+        "java.util.List",
+        "java.util.Optional",
+        "org.springframework.data.jpa.repository.JpaRepository",
+        "Degree_Flowchart.course_dataaccess.data.entities.Course",
+        "Degree_Flowchart.course_dataaccess.data.entities.Department"
+      ],
+      "classes": [
+        {
+          "name": "CourseRepository",
+          "type": "interface",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/repositories/CourseOfferingRepository.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.repositories",
+      "imports": [
+        "java.util.List",
+        "java.util.Optional",
+        "org.springframework.data.jpa.repository.JpaRepository",
+        "Degree_Flowchart.course_dataaccess.data.entities.Course",
+        "Degree_Flowchart.course_dataaccess.data.entities.CourseOffering",
+        "Degree_Flowchart.course_dataaccess.data.entities.Term"
+      ],
+      "classes": [
+        {
+          "name": "CourseOfferingRepository",
+          "type": "interface",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/repositories/PrerequisiteRepository.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.repositories",
+      "imports": [
+        "java.util.List",
+        "org.springframework.data.jpa.repository.JpaRepository",
+        "org.springframework.data.jpa.repository.Query",
+        "org.springframework.data.repository.query.Param",
+        "Degree_Flowchart.course_dataaccess.data.entities.Course",
+        "Degree_Flowchart.course_dataaccess.data.entities.Prerequisite"
+      ],
+      "classes": [
+        {
+          "name": "PrerequisiteRepository",
+          "type": "interface",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Department.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.entities",
+      "imports": [
+        "java.util.Objects",
+        "jakarta.persistence.Column",
+        "jakarta.persistence.Entity",
+        "jakarta.persistence.GeneratedValue",
+        "jakarta.persistence.GenerationType",
+        "jakarta.persistence.Id",
+        "jakarta.persistence.Table"
+      ],
+      "classes": [
+        {
+          "name": "Department",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "Entity",
+              "args": ""
+            },
+            {
+              "name": "Table",
+              "args": "name = \"department\""
+            }
+          ],
+          "roles": [
+            "Entity"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "Long",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Id",
+              "args": ""
+            },
+            {
+              "name": "GeneratedValue",
+              "args": "strategy = GenerationType.IDENTITY"
+            }
+          ],
+          "interesting_annotations": [
+            "Id",
+            "GeneratedValue"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false, unique = true"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "Department",
+          "visibility": null,
+          "return_type": "public",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "Department",
+          "visibility": null,
+          "return_type": "public",
+          "params": "String name",
+          "annotations": []
+        },
+        {
+          "name": "getId",
+          "visibility": "public",
+          "return_type": "Long",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getName",
+          "visibility": "public",
+          "return_type": "String",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "setName",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "String name",
+          "annotations": []
+        },
+        {
+          "name": "equals",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "Object o",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "hashCode",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Course.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.entities",
+      "imports": [
+        "jakarta.persistence.*",
+        "java.util.Objects"
+      ],
+      "classes": [
+        {
+          "name": "Course",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "Entity",
+              "args": ""
+            },
+            {
+              "name": "Table",
+              "args": "name = \"course\""
+            }
+          ],
+          "roles": [
+            "Entity"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "Long",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Id",
+              "args": ""
+            },
+            {
+              "name": "GeneratedValue",
+              "args": "strategy = GenerationType.IDENTITY"
+            }
+          ],
+          "interesting_annotations": [
+            "Id",
+            "GeneratedValue"
+          ]
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false, unique = true"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        },
+        {
+          "name": "credits",
+          "type": "int",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        },
+        {
+          "name": "department",
+          "type": "Department",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "ManyToOne",
+              "args": "optional = false"
+            },
+            {
+              "name": "JoinColumn",
+              "args": "name = \"department_id\""
+            }
+          ],
+          "interesting_annotations": [
+            "ManyToOne",
+            "JoinColumn"
+          ]
+        },
+        {
+          "name": "repeatable",
+          "type": "boolean",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "Course",
+          "visibility": null,
+          "return_type": "public",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "Course",
+          "visibility": null,
+          "return_type": "public",
+          "params": "String code, String title, int credits, Department department, boolean repeatable",
+          "annotations": []
+        },
+        {
+          "name": "getId",
+          "visibility": "public",
+          "return_type": "Long",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getCode",
+          "visibility": "public",
+          "return_type": "String",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getTitle",
+          "visibility": "public",
+          "return_type": "String",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getCredits",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getDepartment",
+          "visibility": "public",
+          "return_type": "Department",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "isRepeatable",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "setCode",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "String code",
+          "annotations": []
+        },
+        {
+          "name": "setTitle",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "String title",
+          "annotations": []
+        },
+        {
+          "name": "setCredits",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "int credits",
+          "annotations": []
+        },
+        {
+          "name": "setDepartment",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "Department department",
+          "annotations": []
+        },
+        {
+          "name": "setRepeatable",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "boolean repeatable",
+          "annotations": []
+        },
+        {
+          "name": "equals",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "Object o",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "hashCode",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/CourseOffering.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.entities",
+      "imports": [
+        "jakarta.persistence.*",
+        "java.util.Objects"
+      ],
+      "classes": [
+        {
+          "name": "CourseOffering",
+          "type": "class",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "Long",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Id",
+              "args": ""
+            },
+            {
+              "name": "GeneratedValue",
+              "args": "strategy = GenerationType.IDENTITY"
+            }
+          ],
+          "interesting_annotations": [
+            "Id",
+            "GeneratedValue"
+          ]
+        },
+        {
+          "name": "course",
+          "type": "Course",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "ManyToOne",
+              "args": "optional = false"
+            },
+            {
+              "name": "JoinColumn",
+              "args": "name = \"course_id\""
+            }
+          ],
+          "interesting_annotations": [
+            "ManyToOne",
+            "JoinColumn"
+          ]
+        },
+        {
+          "name": "term",
+          "type": "Term",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "ManyToOne",
+              "args": "optional = false"
+            },
+            {
+              "name": "JoinColumn",
+              "args": "name = \"term_id\""
+            }
+          ],
+          "interesting_annotations": [
+            "ManyToOne",
+            "JoinColumn"
+          ]
+        },
+        {
+          "name": "capacity",
+          "type": "int",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        },
+        {
+          "name": "enrolledCount",
+          "type": "int",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "CourseOffering",
+          "visibility": null,
+          "return_type": "public",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "CourseOffering",
+          "visibility": null,
+          "return_type": "public",
+          "params": "Course course, Term term, int capacity, int enrolledCount",
+          "annotations": []
+        },
+        {
+          "name": "getId",
+          "visibility": "public",
+          "return_type": "Long",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getCourse",
+          "visibility": "public",
+          "return_type": "Course",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getTerm",
+          "visibility": "public",
+          "return_type": "Term",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getCapacity",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getEnrolledCount",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "setCourse",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "Course course",
+          "annotations": []
+        },
+        {
+          "name": "setTerm",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "Term term",
+          "annotations": []
+        },
+        {
+          "name": "setCapacity",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "int capacity",
+          "annotations": []
+        },
+        {
+          "name": "setEnrolledCount",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "int enrolledCount",
+          "annotations": []
+        },
+        {
+          "name": "getAvailableSeats",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Transient",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "isFull",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Transient",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "equals",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "Object o",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "hashCode",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Term.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.entities",
+      "imports": [
+        "java.util.Objects",
+        "jakarta.persistence.Column",
+        "jakarta.persistence.Entity",
+        "jakarta.persistence.GeneratedValue",
+        "jakarta.persistence.GenerationType",
+        "jakarta.persistence.Id",
+        "jakarta.persistence.Table"
+      ],
+      "classes": [
+        {
+          "name": "Term",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "Entity",
+              "args": ""
+            },
+            {
+              "name": "Table",
+              "args": "name = \"term\""
+            }
+          ],
+          "roles": [
+            "Entity"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "Long",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Id",
+              "args": ""
+            },
+            {
+              "name": "GeneratedValue",
+              "args": "strategy = GenerationType.IDENTITY"
+            }
+          ],
+          "interesting_annotations": [
+            "Id",
+            "GeneratedValue"
+          ]
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false, unique = true"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Column",
+              "args": "nullable = false"
+            }
+          ],
+          "interesting_annotations": [
+            "Column"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "Term",
+          "visibility": null,
+          "return_type": "public",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "Term",
+          "visibility": null,
+          "return_type": "public",
+          "params": "String label, boolean active",
+          "annotations": []
+        },
+        {
+          "name": "getId",
+          "visibility": "public",
+          "return_type": "Long",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getLabel",
+          "visibility": "public",
+          "return_type": "String",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "isActive",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "setLabel",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "String label",
+          "annotations": []
+        },
+        {
+          "name": "setActive",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "boolean active",
+          "annotations": []
+        },
+        {
+          "name": "equals",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "Object o",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "hashCode",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Prerequisite.java",
+      "package": "Degree_Flowchart.course_dataaccess.data.entities",
+      "imports": [
+        "java.util.Objects",
+        "jakarta.persistence.Entity",
+        "jakarta.persistence.GeneratedValue",
+        "jakarta.persistence.GenerationType",
+        "jakarta.persistence.Id",
+        "jakarta.persistence.JoinColumn",
+        "jakarta.persistence.ManyToOne",
+        "jakarta.persistence.Table",
+        "jakarta.persistence.UniqueConstraint"
+      ],
+      "classes": [
+        {
+          "name": "Prerequisite",
+          "type": "class",
+          "annotations": [],
+          "roles": []
+        }
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "Long",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "Id",
+              "args": ""
+            },
+            {
+              "name": "GeneratedValue",
+              "args": "strategy = GenerationType.IDENTITY"
+            }
+          ],
+          "interesting_annotations": [
+            "Id",
+            "GeneratedValue"
+          ]
+        },
+        {
+          "name": "course",
+          "type": "Course",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "ManyToOne",
+              "args": "optional = false"
+            },
+            {
+              "name": "JoinColumn",
+              "args": "name = \"course_id\""
+            }
+          ],
+          "interesting_annotations": [
+            "ManyToOne",
+            "JoinColumn"
+          ]
+        },
+        {
+          "name": "requiredCourse",
+          "type": "Course",
+          "visibility": "private",
+          "annotations": [
+            {
+              "name": "ManyToOne",
+              "args": "optional = false"
+            },
+            {
+              "name": "JoinColumn",
+              "args": "name = \"required_course_id\""
+            }
+          ],
+          "interesting_annotations": [
+            "ManyToOne",
+            "JoinColumn"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "Prerequisite",
+          "visibility": null,
+          "return_type": "public",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "Prerequisite",
+          "visibility": null,
+          "return_type": "public",
+          "params": "Course course, Course requiredCourse",
+          "annotations": []
+        },
+        {
+          "name": "getId",
+          "visibility": "public",
+          "return_type": "Long",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getCourse",
+          "visibility": "public",
+          "return_type": "Course",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "getRequiredCourse",
+          "visibility": "public",
+          "return_type": "Course",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "setCourse",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "Course course",
+          "annotations": []
+        },
+        {
+          "name": "setRequiredCourse",
+          "visibility": "public",
+          "return_type": "void",
+          "params": "Course requiredCourse",
+          "annotations": []
+        },
+        {
+          "name": "equals",
+          "visibility": "public",
+          "return_type": "boolean",
+          "params": "Object o",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        },
+        {
+          "name": "hashCode",
+          "visibility": "public",
+          "return_type": "int",
+          "params": "",
+          "annotations": [
+            {
+              "name": "Override",
+              "args": ""
+            }
+          ]
+        }
+      ],
+      "class_level_paths": []
+    },
+    {
+      "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/services/CourseDataAccessService.java",
+      "package": "Degree_Flowchart.course_dataaccess.services",
+      "imports": [
+        "java.util.Collections",
+        "java.util.List",
+        "java.util.Locale",
+        "java.util.Optional",
+        "org.springframework.stereotype.Service",
+        "org.springframework.transaction.annotation.Transactional",
+        "Degree_Flowchart.course_dataaccess.data.entities.Course",
+        "Degree_Flowchart.course_dataaccess.data.entities.CourseOffering",
+        "Degree_Flowchart.course_dataaccess.data.entities.Prerequisite",
+        "Degree_Flowchart.course_dataaccess.data.repositories.CourseOfferingRepository",
+        "Degree_Flowchart.course_dataaccess.data.repositories.CourseRepository",
+        "Degree_Flowchart.course_dataaccess.data.repositories.PrerequisiteRepository",
+        "Degree_Flowchart.course_dataaccess.data.repositories.TermRepository",
+        "Degree_Flowchart.course_dataaccess.dto.CourseDto",
+        "Degree_Flowchart.course_dataaccess.dto.CourseOfferingDto",
+        "Degree_Flowchart.course_dataaccess.dto.PrerequisiteDto"
+      ],
+      "classes": [
+        {
+          "name": "CourseDataAccessService",
+          "type": "class",
+          "annotations": [
+            {
+              "name": "Service",
+              "args": ""
+            },
+            {
+              "name": "Transactional",
+              "args": "readOnly = true"
+            }
+          ],
+          "roles": [
+            "Service"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "name": "courseRepository",
+          "type": "CourseRepository",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        },
+        {
+          "name": "courseOfferingRepository",
+          "type": "CourseOfferingRepository",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        },
+        {
+          "name": "prerequisiteRepository",
+          "type": "PrerequisiteRepository",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        },
+        {
+          "name": "termRepository",
+          "type": "TermRepository",
+          "visibility": "private",
+          "annotations": [],
+          "interesting_annotations": []
+        },
+        {
+          "name": "value",
+          "type": "return",
+          "visibility": null,
+          "annotations": [],
+          "interesting_annotations": []
+        }
+      ],
+      "methods": [
+        {
+          "name": "CourseDataAccessService",
+          "visibility": null,
+          "return_type": "public",
+          "params": "CourseRepository courseRepository, CourseOfferingRepository courseOfferingRepository, PrerequisiteRepository prerequisiteRepository, TermRepository termRepository",
+          "annotations": []
+        },
+        {
+          "name": "findCourseByCode",
+          "visibility": "public",
+          "return_type": "Optional<CourseDto>",
+          "params": "String code",
+          "annotations": []
+        },
+        {
+          "name": "findOfferingsByTermLabel",
+          "visibility": "public",
+          "return_type": "List<CourseOfferingDto>",
+          "params": "String termLabel",
+          "annotations": []
+        },
+        {
+          "name": "findOfferingsForActiveTerm",
+          "visibility": "public",
+          "return_type": "List<CourseOfferingDto>",
+          "params": "",
+          "annotations": []
+        },
+        {
+          "name": "findOffering",
+          "visibility": "public",
+          "return_type": "Optional<CourseOfferingDto>",
+          "params": "String courseCode, String termLabel",
+          "annotations": []
+        },
+        {
+          "name": "findPrerequisitesByCourseCode",
+          "visibility": "public",
+          "return_type": "List<PrerequisiteDto>",
+          "params": "String courseCode",
+          "annotations": []
+        },
+        {
+          "name": "toCourseDto",
+          "visibility": "private",
+          "return_type": "CourseDto",
+          "params": "Course course",
+          "annotations": []
+        },
+        {
+          "name": "toOfferingDto",
+          "visibility": "private",
+          "return_type": "CourseOfferingDto",
+          "params": "CourseOffering offering",
+          "annotations": []
+        },
+        {
+          "name": "toPrerequisiteDto",
+          "visibility": "private",
+          "return_type": "PrerequisiteDto",
+          "params": "Prerequisite prerequisite",
+          "annotations": []
+        },
+        {
+          "name": "normalize",
+          "visibility": "private",
+          "return_type": "String",
+          "params": "String value",
+          "annotations": []
+        }
+      ],
+      "class_level_paths": []
+    }
+  ],
+  "summary": {
+    "packages": [
+      "Degree_Flowchart.course_dataaccess",
+      "Degree_Flowchart.course_dataaccess.controllers",
+      "Degree_Flowchart.course_dataaccess.data.entities",
+      "Degree_Flowchart.course_dataaccess.data.repositories",
+      "Degree_Flowchart.course_dataaccess.dto",
+      "Degree_Flowchart.course_dataaccess.services"
+    ],
+    "controllers": [
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/CourseController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "name": "CourseController",
+        "type": "class"
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/TermController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "name": "TermController",
+        "type": "class"
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/OfferingController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "name": "OfferingController",
+        "type": "class"
+      }
+    ],
+    "services": [
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/services/CourseDataAccessService.java",
+        "package": "Degree_Flowchart.course_dataaccess.services",
+        "name": "CourseDataAccessService",
+        "type": "class"
+      }
+    ],
+    "repositories": [],
+    "entities": [
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Department.java",
+        "package": "Degree_Flowchart.course_dataaccess.data.entities",
+        "name": "Department",
+        "type": "class"
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Course.java",
+        "package": "Degree_Flowchart.course_dataaccess.data.entities",
+        "name": "Course",
+        "type": "class"
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/data/entities/Term.java",
+        "package": "Degree_Flowchart.course_dataaccess.data.entities",
+        "name": "Term",
+        "type": "class"
+      }
+    ],
+    "configurations": [
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/CourseDataaccessApplication.java",
+        "package": "Degree_Flowchart.course_dataaccess",
+        "name": "CourseDataaccessApplication",
+        "type": "class"
+      }
+    ],
+    "components": [],
+    "endpoints": [
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/CourseController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "method_name": "getCourseByCode",
+        "return_type": "ResponseEntity<CourseDto>",
+        "class_level_paths": [
+          "/courses"
+        ],
+        "method_paths": [
+          "/{code}"
+        ],
+        "http_methods": [
+          "GET"
+        ]
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/CourseController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "method_name": "getPrerequisites",
+        "return_type": "List<PrerequisiteDto>",
+        "class_level_paths": [
+          "/courses"
+        ],
+        "method_paths": [
+          "/{code}/prerequisites"
+        ],
+        "http_methods": [
+          "GET"
+        ]
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/TermController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "method_name": "getOfferingsByTerm",
+        "return_type": "List<CourseOfferingDto>",
+        "class_level_paths": [
+          "/terms"
+        ],
+        "method_paths": [
+          "/{termLabel}/offerings"
+        ],
+        "http_methods": [
+          "GET"
+        ]
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/TermController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "method_name": "getActiveTermOfferings",
+        "return_type": "List<CourseOfferingDto>",
+        "class_level_paths": [
+          "/terms"
+        ],
+        "method_paths": [
+          "/active/offerings"
+        ],
+        "http_methods": [
+          "GET"
+        ]
+      },
+      {
+        "file": "/Users/connormalone/SE2/Degree-Flowchart/course-dataaccess/src/main/java/Degree_Flowchart/course_dataaccess/controllers/OfferingController.java",
+        "package": "Degree_Flowchart.course_dataaccess.controllers",
+        "method_name": "getOffering",
+        "return_type": "ResponseEntity<CourseOfferingDto>",
+        "class_level_paths": [
+          "/offerings"
+        ],
+        "method_paths": [],
+        "http_methods": [
+          "GET"
+        ]
+      }
+    ]
+  }
+}

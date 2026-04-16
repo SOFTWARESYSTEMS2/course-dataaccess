@@ -1,0 +1,11 @@
+Done. Wrote project structure to: spring_project_structure.json
+
+Summary:
+  Packages:       6
+  Controllers:    3
+  Services:       1
+  Repositories:   0
+  Entities:       3
+  Configurations: 1
+  Components:     0
+  Endpoints:      5
