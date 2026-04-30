@@ -11,6 +11,7 @@ import Degree_Flowchart.course_dataaccess.data.entities.Prerequisite;
 
 public interface PrerequisiteRepository extends JpaRepository<Prerequisite, Long> {
     List<Prerequisite> findByCourse(Course course);
+    void deleteByCourseAndRequiredCourse(Course course, Course requiredCourse);
 
     // Fetch all prerequisites for a batch of courses in one query — avoids N+1
     @Query("SELECT p FROM Prerequisite p WHERE p.course IN :courses")

@@ -12,4 +12,5 @@ import Degree_Flowchart.course_dataaccess.data.entities.Term;
 public interface CourseOfferingRepository extends JpaRepository<CourseOffering, Long> {
     List<CourseOffering> findByTerm(Term term);
     Optional<CourseOffering> findByCourseAndTerm(Course course, Term term);
+    void deleteById(String id);
 }

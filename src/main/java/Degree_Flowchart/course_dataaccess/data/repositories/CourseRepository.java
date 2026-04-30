@@ -11,4 +11,5 @@ import Degree_Flowchart.course_dataaccess.data.entities.Department;
 public interface CourseRepository extends JpaRepository<Course, Long> {
     Optional<Course> findByCode(String code);
     List<Course> findByDepartment(Department department);
+    void deleteByCode(String code);
 }
